@@ -1,7 +1,14 @@
-from fastapi import FastAPI
+from flask import Flask
 
-app = FastAPI()
+app = Flask(__name__)
 
-@app.get("/helloworld")
-async def read_root():
-    return{"Message":"Python Api Working"}
+@app.route("/")
+def home():
+    return "Welcome to Azure!"
+
+@app.route("/hello")
+def hello():
+    return "Hello World"
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8000)
